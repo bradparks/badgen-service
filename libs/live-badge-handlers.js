@@ -14,6 +14,7 @@ module.exports = Object.entries(liveFns).map(([name, fn]) => {
     } = await fetchLiveParams(name, fn, req.params['*'])
 
     req.params = { subject, status, color, style }
+
     serveBadge(req, res, {
       maxAge: fail ? '0' : (Math.random() * 240 + 120).toFixed()
     })
@@ -31,7 +32,7 @@ async function fetchLiveParams (scope, fn, paramsPath) {
   }).then(result => {
     console.timeEnd(fetchKey)
     waitings[fetchKey] = undefined
-    return result
+    return result || {}
   })
 
   return waitings[fetchKey]
