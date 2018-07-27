@@ -15,18 +15,12 @@ module.exports = serveMarked('libs/index.md', {
     h1 + p { letter-spacing: 0.1px }
     h1 + p a { display: inline-block; margin-top: 1em; padding: 4px; height: 20px }
     h1 + p img { height: 20px }
+    dt { margin: 1em 0; border-bottom: 1px solid #DDD; line-height: 2.6em }
+    dd { font: 14px/20px monospace; vertical-align: top; height: 28px; white-space: nowrap }
+    dd img { vertical-align: top }
+    dd b { display: inline-block; min-width: 12em; text-align: right; font-weight: 300 }
+    dd i { display: inline-block; min-width: 12em }
   `,
   beforeHeadEnd: `<link rel="icon" type="image/svg+xml" href="/favicon.svg">`,
-  beforeBodyEnd: `
-    <script>
-      if (window.location.hostname === 'flat.badgen.net') {
-        const code = document.querySelector('pre code')
-        code.innerText = code.innerText.replace(
-          'badgen.net',
-          'flat.badgen.net'
-        ).replace(/\\n/g, '\\n     ')
-      }
-    </script>
-  `,
   trackingGA: 'UA-4646421-14'
 })
